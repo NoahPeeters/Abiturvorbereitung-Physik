@@ -12,14 +12,25 @@
 \usepackage{wrapfig}
 \usepackage{float}
 \usepackage[margin=2cm]{geometry}
+\usepackage{mathtools}
 
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+\newcommand*{\Value}{\frac{1}{2}x^2}
 
 %opening
-\title{}
-\author{}
 \title{Zusammenfassung Oberstufe Physik\\Drei Jahre auf 20 Seiten}
-\author{Noah Peeters\\ Autor\\ \small{Schüler, Otto-Hahn-Gymnasium Geesthacht, Germany} \and Merlin Brandt\\ Lektor\\\small{Schüler, Otto-Hahn-Gymnasium Geesthacht, Germany} \and Til Blechschmidt\\Lektor\\ \small{Schüler, Otto-Hahn-Gymnasium Geesthacht, Germany}}
-\date{Dezember 2016} 
+\author{Noah Peeters\\ Autor\\ \small{Schüler, Otto-Hahn-Gymnasium Geesthacht, Germany} \and Jonas Peeters\\Autor\\ \small{Schüler, Otto-Hahn-Gymnasium Geesthacht, Germany} \and Merlin Brandt\\ Lektor\\\small{Schüler, Otto-Hahn-Gymnasium Geesthacht, Germany} \and Til Blechschmidt\\Lektor\\ \small{Schüler, Otto-Hahn-Gymnasium Geesthacht, Germany} }
+\date{August 2017}
 
 
 \begin{document}
@@ -396,17 +407,35 @@
 			\end{equation}
 			
 		
-		\subsection{Doppelspalt}%TODO Doppelspalt einbauen
-	
-		\subsection{Überlagerung von harmonsichen Schwingungen}
+		\subsection{Doppelspalt}
+			
+			Am Doppelspalt werden Inteferenzmuster von zwei gleichen, in Phase schwingenden Wellen gezeigt. Dafür wird vor dem Doppelspalt eine Welle erzeugt, welche dann auf ein Hindernis mit zwei Spalten trifft. Deren Breite sollte sich in der Größenordnung der Wellenlänge der Welle befinden. Dadurch erhält man zwei Elementarwellen, die sich kreisförmig außbreiten, die die gleiche Frequenz haben und die in Phase miteinander schwingen. Diese beiden neuen Wellen erzeugen dann ein Inteferenzmuster welches zum Beispiel auf einer geraden oder gekrümmten Projektionsfläche betrachtet werden kann.
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=0.5\textwidth]{img/Inteferenz_am_Doppelspalt.png}
+				\label{img:inteferenz_am_doppelspalt}
+				\caption{Darstellung der Inteferenz am Doppelspalt auf einer geraden Projektionsfläche}
+			\end{figure}
+			$\delta s$ ist die Wellenlänge, wenn $s1$ und $s2$ je die Distanz von den Spalten zum ersten Maximum ist. Entsprechend gilt $\frac{\delta s}{n}$ für das $n$-te Maximum. Mithilfe von Pythagoras ($a^2+b^2=c^2$) lässt sich dann folgende Gleichung für die Wellenlänge berechnen, vorausgesetzt es sind einige Werte gegeben:
+				
+			\begin{equation}
+				\begin{aligned}
+					\frac{\delta s}{n} &= \lambda\\
+					&= \frac{\abs{\sqrt{l^2 + \left(x - \frac{g}{2} \right)} - \sqrt{l^2 + \left(x + \frac{g}{2} \right)}}}{n}
+				\end{aligned}
+			\end{equation}
+			
+			
+		\subsection{Überlagerung von harmonischen Schwingungen}
 	
 			\subsubsection{Überlagerung gleicher Frequenzen}
 			
-				Überlagert man zwei Schwingungen mit gleicher Frequenz erhällt man wieder eine harmonische Schwingung mit derselben Frequenz. Phase und Amplitude ergeben sich aus vektorieller Addition. Es kommt bei Phasengleichheit zur konstruktiven Interferenz, bei einer Phasendifferenz von $\pi$ zur destruktiven Interferenz.
+				Überlagert man zwei Schwingungen mit gleicher Frequenz erhält man wieder eine harmonische Schwingung mit derselben Frequenz. Phase und Amplitude ergeben sich aus vektorieller Addition. Es kommt bei Phasengleichheit zur konstruktiven Interferenz, bei einer Phasendifferenz von $\pi$ zur destruktiven Interferenz.
 			
 			\subsubsection{Überlagerung unterschiedlicher Frequenzen und Schwebung}
 			
-				Überlagert man zwei Schwingungen mit unerschiedlichen Frequenzen $f_1$ und $f_2$ überlagern sie sich zu einer Schwebung. Es entsteht deshalb auch \textit{keine} harmonische Schwingung. Die neue Schwingung hat die Grundfrequenz
+				Überlagert man zwei Schwingungen mit unterschiedlichen Frequenzen $f_1$ und $f_2$ überlagern sie sich zu einer Schwebung. Es entsteht deshalb auch \textit{keine} harmonische Schwingung. Die neue Schwingung hat die Grundfrequenz
 				
 				\begin{equation}
 					f=\frac{f_1+f_2}{2}
@@ -583,7 +612,7 @@
 				
 				\paragraph{Millikan-Versuch}
 					
-					Beim Millikonversuch werden leicht geladene Öltropfchen in einen Plattenkondesator gegeben. Wenn man die Spannung des Kondensators so einstellt, dass die Tröpfchen schweben, gilt
+					Beim Millikanversuch werden leicht geladene Öltropfchen in einen Plattenkondesator gegeben. Wenn man die Spannung des Kondensators so einstellt, dass die Tröpfchen schweben, gilt
 					\begin{equation}\label{millikan:f_g}
 						F_G=F_{el}\Leftrightarrow m\cdot g = Q\cdot \vec{E} = Q\cdot\frac{U}{d}
 					\end{equation}
@@ -772,7 +801,7 @@
 			
 			
 			\paragraph{Massenspektrometer}
-				Das Massenspektrometer besteht aus zwei Teilen (siehe Abbildung \ref{img:massenspektrometer}): Dem Geschwindigkeitsfilter und dem eigentlichen Massentrenner. Es soll die Massen verschiedener Ionen (geladener Teilchen) bestimmen.
+				Das Massenspektrometer besteht aus zwei Teilen (siehe Abbildung \ref{img:massenspektrometer}): Dem Geschwindigkeitsfilter und dem eigentlichen Massentrenner. Es soll die Massen verschiedener geladener Teilchen bestimmen.
 				
 				\begin{figure}[ht]
 					\centering
@@ -781,7 +810,7 @@
 					\label{img:massenspektrometer}
 				\end{figure}
 				
-				\subparagraph{Geschwindigkeitsfilter} Der Geschwindigkeitsfilter besteht aus zwei Feldern: Einem elektrischen mit der Feldstärke $\vec{E}$ und einem magnetischen mit der Feldstärke $\vec{B_1}$. Damit ein Ion den Geschwindigkeitsfilter gerade passiert und dann durch die Blende zum Massentrenner zu gelagen muss unter vernachlässigung von Gravitation folgendes gelten:
+				\subparagraph{Geschwindigkeitsfilter} Der Geschwindigkeitsfilter besteht aus zwei Feldern: Einem elektrischen mit der Feldstärke $\vec{E}$ und einem magnetischen mit der Feldstärke $\vec{B_1}$. Damit ein geladenes Teilchen den Geschwindigkeitsfilter gerade passiert und dann durch die Blende zum Massentrenner zu gelagen muss unter vernachlässigung von Gravitation folgendes gelten:
 				
 				\begin{equation}
 				\begin{aligned} 
@@ -790,9 +819,9 @@
 					v&=\frac{E}{B}
 				\end{aligned}
 				\end{equation}
-				Es kommen also nur Ionen mit einer spezifischen Geschwindigkeit durch den Geschwindigkeitsfilter. Alle anderen Ionen werden entweder nach oben oder nach unten abgelenkt. Die Ladung spielt dabei keine Rolle.
+				Es kommen also nur Teilchen mit einer spezifischen Geschwindigkeit durch den Geschwindigkeitsfilter. Alle anderen Teilchen werden entweder nach oben oder nach unten abgelenkt. Die Ladung spielt dabei keine Rolle.
 				
-				\subparagraph{Massentrenner} Der Massentrenner besteht aus einem homogenen Magnetfeld mit der Feldstärke $\vec{B_2}$ und einer Fotoplatte. Treten die Ionen in dieses Magnetfeld ein, werden sie auf einer Kreisbahn abgelenkt. Es gilt:
+				\subparagraph{Massentrenner} Der Massentrenner besteht aus einem homogenen Magnetfeld mit der Feldstärke $\vec{B_2}$ und einer Fotoplatte. Treten die geladenen Teilchen in dieses Magnetfeld ein, werden sie auf einer Kreisbahn abgelenkt. Es gilt:
 				
 				\begin{equation}
 					\begin{aligned} 
@@ -801,7 +830,7 @@
 						m&=\frac{B_2\cdot Q\cdot r}{v}
 					\end{aligned}
 				\end{equation}
-				Da alle in das Magnetfeld eintreffenden Ionen zuvor den Geschwindigkeitsfilter überwinden mussten, haben sie die Geschwindigkeit $v=\frac{E}{B_1}$:
+				Da alle in das Magnetfeld eintreffenden Teilchen zuvor den Geschwindigkeitsfilter überwinden mussten, haben sie die Geschwindigkeit $v=\frac{E}{B_1}$:
 				
 				\begin{equation}
 				\begin{aligned}
@@ -809,11 +838,11 @@
 					&=\frac{B_1\cdot B_2\cdot Q\cdot r}{E}
 				\end{aligned}
 				\end{equation}
-				Die Masse der Ionen ist also nur von den bekannten Größen $\vec{B_1}$, $\vec{B_2}$, $\vec{E}$ und $Q$ abhängig\ und lässt sich daher bestimmen.
+				Die Masse der Teilchen ist also nur von den bekannten Größen $\vec{B_1}$, $\vec{B_2}$, $\vec{E}$ und $Q$ abhängig\ und lässt sich daher bestimmen.
 				
 
 				
-			\paragraph{Induktion und Lenz'sche Regel}			%TODO: Einbauen: Induktion
+			\paragraph{Induktion und Lenz'sche Regel}		%TODO: Einbauen: Induktion
 		
 	\section{Quantenphysik des Lichtes}
 		\subsection{Lichtelektrischer Effekt (Photoeffekt)}
